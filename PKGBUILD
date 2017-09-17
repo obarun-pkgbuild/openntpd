@@ -4,7 +4,7 @@
  
 pkgname=openntpd
 _pkgbase=openntpd-portable
-pkgver=6.2p1
+pkgver=6.2p3
 pkgrel=2
 pkgdesc='Free, easy to use implementation of the Network Time Protocol.'
 url='http://www.openntpd.org/'
@@ -19,8 +19,8 @@ backup=('etc/ntpd.conf')
 install=$pkgname.install
 #source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenNTPD/${pkgname}-$pkgver.tar.gz")
 source=("openntpd-portable::git+https://github.com/openntpd-portable/openntpd-portable#commit=$_commit")
-_commit=e38aabeae824f1c114ebbbe241a3276ed6146b16 # tag 6.2p0
-sha256sums=(SKIP)
+_commit=19c9c6ff003bd91c9133997f310d1ccbbbc69aaa # tag 6.2p3
+sha256sums=('SKIP')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
 prepare(){

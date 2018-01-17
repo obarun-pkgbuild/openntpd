@@ -5,22 +5,21 @@
 pkgname=openntpd
 _pkgbase=openntpd-portable
 pkgver=6.2p3
-pkgrel=2
+pkgrel=4
 pkgdesc='Free, easy to use implementation of the Network Time Protocol.'
 url='http://www.openntpd.org/'
 arch=(x86_64)
 license=(BSD)
 depends=('openssl')
 makedepends=('git' 'libtool' 'bison')
-optdepends=('ntpd-s6serv: openntpd s6 service'
-			'ntpd-runitserv: openntpd runit service')
 conflicts=('ntp')
 backup=('etc/ntpd.conf')
-install=$pkgname.install
 #source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenNTPD/${pkgname}-$pkgver.tar.gz")
-source=("openntpd-portable::git+https://github.com/openntpd-portable/openntpd-portable#commit=$_commit")
+source=("openntpd-portable::git+https://github.com/openntpd-portable/openntpd-portable#commit=$_commit"
+		"openntpd.sysusers")
 _commit=19c9c6ff003bd91c9133997f310d1ccbbbc69aaa # tag 6.2p3
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'f96089b43cfb5c17399c011a11ab5ae653d63ae0910e1b5583b79dd212c429e9')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
 prepare(){
@@ -68,10 +67,12 @@ package() {
   sed -i 's/\*/0.0.0.0/' "$pkgdir/etc/ntpd.conf"
   
   #create privsep directory
-  install -dm0755 "$pkgdir/var/empty/openntpd" 
+  install -dm 0755 "$pkgdir/var/empty/openntpd" 
   
   # this directory is define directly on /run, we don't need anymore.
   rm -r "$pkgdir/var/lib/openntpd/run"  
+
+  install -Dm 0644 "${srcdir}/openntpd.sysusers" "${pkgdir}/usr/lib/sysusers.d/openntpd.conf"
 }
  
 # vim:set ts=2 sw=2 et:

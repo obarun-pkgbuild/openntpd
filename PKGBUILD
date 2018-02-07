@@ -5,7 +5,7 @@
 pkgname=openntpd
 _pkgbase=openntpd-portable
 pkgver=6.2p3
-pkgrel=4
+pkgrel=5
 pkgdesc='Free, easy to use implementation of the Network Time Protocol.'
 url='http://www.openntpd.org/'
 arch=(x86_64)

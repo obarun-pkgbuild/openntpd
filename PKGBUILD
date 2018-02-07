@@ -19,7 +19,7 @@ source=("openntpd-portable::git+https://github.com/openntpd-portable/openntpd-po
 		"openntpd.sysusers")
 _commit=19c9c6ff003bd91c9133997f310d1ccbbbc69aaa # tag 6.2p3
 sha256sums=('SKIP'
-            'f96089b43cfb5c17399c011a11ab5ae653d63ae0910e1b5583b79dd212c429e9')
+            'bec9a1009d6c63a3959708a1a7e159411b698c3dcff0bc7e53949e1843a25005')
 validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
 
 prepare(){
